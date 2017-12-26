@@ -1,6 +1,5 @@
 import model from 'genesis/support/model'
 import { resource } from 'genesis/infra/services/http/resource'
-import { activate } from 'src/domains/general/slots/activate/services/activate'
 import { remote as organizationRemote } from 'src/domains/admin/organization/model'
 
 /**
@@ -83,19 +82,12 @@ const actions = ($this, actions) => {
 }
 
 /**
- * @type {Array}
- */
-const slots = [
-  activate(service)
-]
-
-/**
  * @param {string} scope
  * @param {Route} route
  * @returns {Object}
  */
 export const grid = (scope, route) => {
-  return model.grid(service, path, id, fields('index', route), filters(scope, route), actions, {slots})
+  return model.grid(service, path, id, fields('index', route), filters(scope, route), actions, {})
 }
 
 /**

@@ -1,7 +1,6 @@
 import model from 'genesis/support/model'
 import { resource, source } from 'genesis/infra/services/http/resource'
 import { button } from 'genesis/modules/dashboard'
-import 'src/domains/general/slots/MyLink'
 import { PATH_HOME } from 'genesis/support/index'
 
 /**
