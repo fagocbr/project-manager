@@ -24,8 +24,8 @@ export default (service, path, id, schemas, filters, actions = null, options = {
       }
     ],
     timeout: 150,
-    top: false,
-    bottom: true,
+    top: true,
+    bottom: false,
     styles: {
       height: 'calc(100vh - 235px)',
       minHeight: '250px'

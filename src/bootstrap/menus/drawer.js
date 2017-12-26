@@ -1,3 +1,7 @@
 // import { group, menu, item } from 'genesis/modules/dashboard'
 
-export default (to) => []
+import { menu as project } from 'src/domains/manager/project/model'
+
+export default (to) => [
+  project(to)
+]

@@ -2,6 +2,7 @@ import { route } from 'genesis/infra/router/resources'
 
 import home from 'src/app/modules/dashboard/routes'
 import { routes as admin } from 'src/domains/admin'
+import { routes as manager } from 'src/domains/manager'
 
 /*
  * Configure the property meta with namespace and permission to access control
@@ -19,6 +20,7 @@ import { routes as admin } from 'src/domains/admin'
 export default [
   route('/dashboard', '', 'app/modules/dashboard/components/DashboardIndex', {}, {}, [
     ...home,
-    ...admin
+    ...admin,
+    ...manager
   ])
 ]

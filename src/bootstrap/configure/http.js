@@ -136,6 +136,9 @@ export const httpError = (error, router, store) => {
  * @returns {*}
  */
 export const $extract = (response, property, fallback = {}) => {
+  if (!response) {
+    return {}
+  }
   if (!response.data) {
     return {}
   }
@@ -177,9 +180,10 @@ export const $status = (response, fallback = {}) => {
  * @returns {*}
  */
 export const $first = (response) => {
-  const content = $body(response)
-  if (Array.isArray(content)) {
-    return content.shift()
-  }
-  return content
+  return response
+  // const content = $body(response)
+  // if (Array.isArray(content)) {
+  //   return content.shift()
+  // }
+  // return content
 }

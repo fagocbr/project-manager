@@ -1,3 +1,5 @@
+const VueFire = require('vuefire')
+
 // settings of vendors
 import 'src/vendor/quasar'
 import 'src/vendor/froala'
@@ -13,6 +15,9 @@ import { beforeUnload, errorHandler } from 'src/bootstrap/events'
  */
 const bootstrap = (Vue) => {
   Vue.config.errorHandler = errorHandler
+
+  // explicit installation required in module environments
+  Vue.use(VueFire)
 
   return install(Vue, beforeUnload)
 }

@@ -5,49 +5,78 @@
       Home
     </div>
     <div slot="content">
-      <h5>Bem vindo ao PHPZM Quasar Boilerplate</h5>
-      <p align="justify">
-        O propósito desse projeto é catalisar tudo o que é implementado e aprendido pela comunidade em um projeto real
-        disponível para todos.
-        <br>
-        <small>Este projeto envolve algumas metodologias avançadas e pode não ser indicado para iniciantes.</small>
-        <br>
-      </p>
-      <div class="jumbotron info yellow pulse">
-        Este é um projeto experimental e requer que haja revisões antes de ir para produção.
-        Não nos responsabilizamos por eventuais problemas! Nenhum problema mesmo #ficadica.
+      <div v-if="records">
+        <div v-for="(record, key, index) in records" :key="key">
+          {{ index + 1 }}
+          <input type="text" class="input" v-model="record.name"/>
+          <textarea class="input" v-model="record.description"></textarea>
+          <q-button @click="">
+            POST
+          </q-button>
+          <q-button @click="destroy(key)">
+            DELETE {{ key }}
+          </q-button>
+          <hr v-if="records.length > 1">
+        </div>
       </div>
       <hr>
-      <p align="justify">
-        Você pode ver o código-fonte do projeto aqui no <a href="https://github.com/genesis/quasar-boilerplate"
-                                                           target="_blank">Github</a>
-      </p>
-      <p align="justify">
-        Os exemplos da <strong>"API de Forms"</strong> utilizam uma API "fake" que é provida por esse arquivo
-        <a href="https://github.com/genesis/quasar-boilerplate/blob/master/.deploy/api/index.php">aqui</a>.
-      </p>
-      <hr>
-      <p align="justify">
-        Eu e o Gilvan conversamos sobre a estrutura utilizada e gravamos um vídeo sobre essa conversa.
-        O vídeo está desatualizado em relação ao momento atual do projeto, mas dá para ter uma ideia do que está havendo.
-        <br>
-        <small>Faremos um atualizado o quanto antes</small>
-        <br>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/xpYNVO5YJqw?rel=0" frameborder="0"
-                allowfullscreen></iframe>
-      </p>
+      <q-button @click="create">
+        CREATE
+      </q-button>
+      <q-button @click="read">
+        REFRESH
+      </q-button>
     </div>
   </app-card>
 </template>
 
 <script type="text/javascript">
   import AppCard from 'genesis/components/card/AppCard.vue'
+  import { service } from 'src/domains/manager/project/model'
 
   export default {
+    name: 'dashboard-home',
     components: {
       AppCard
     },
-    name: 'dashboard-home'
+    data: () => ({
+      records: [],
+      service: service
+    }),
+    methods: {
+      create () {
+        this.service
+          .post({
+            name: 'SIGA',
+            description: 'Description +version: ' + Math.random()
+          })
+          .then(data => {
+            console.log('~> create', data)
+            this.read()
+          })
+      },
+      read () {
+        this.service.get().then(data => {
+          this.records = data
+        })
+      },
+      destroy (key) {
+        this.service.delete(key)
+          .then(data => {
+            console.log('~> destroy', data)
+            this.read()
+          })
+          .catch(error => {
+            console.log('~> destroy.error', error)
+          })
+      }
+    },
+    mounted () {
+      this.service.subscribe((data) => {
+        this.read()
+        console.log('~> subscribed', data)
+      })
+    }
   }
 </script>
 

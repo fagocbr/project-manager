@@ -1,5 +1,5 @@
-import { $body } from 'src/bootstrap/configure/http'
-import { getDotNotation } from 'genesis/support/transform'
+// import { $body } from 'src/bootstrap/configure/http'
+// import { getDotNotation } from 'genesis/support/transform'
 
 /**
  * @param {AppCrudForm} $component
@@ -7,12 +7,13 @@ import { getDotNotation } from 'genesis/support/transform'
  * @param {Function} callback
  */
 export default ($component, response, callback = null) => {
-  let body = $body(response)
-  if (!Array.isArray(body)) {
-    $component.data = getDotNotation($component.fields, body)
-    return
+  if (!response) {
+    return {}
   }
-  $component.data = getDotNotation($component.fields, body[0])
+  if (typeof response !== 'object') {
+    return {}
+  }
+  $component.data = response
 
   if (typeof callback === 'function') {
     callback()
