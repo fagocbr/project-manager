@@ -18,7 +18,7 @@ export default (service, path, id, schemas, filters, actions = null, options = {
         field: primaryKey,
         component: 'AppLink',
         props: {
-          path: `${path}/{_id}`,
+          path: `${path}/{${id}}`,
           label: ''
         }
       }

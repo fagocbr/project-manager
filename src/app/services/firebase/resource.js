@@ -1,13 +1,14 @@
 import { get } from 'lodash'
-import { database, transaction } from './database'
+import { database, transaction } from 'src/app/services/firebase/database'
 import { promise } from 'genesis/support/utils'
 
 /**
- * @param collection
+ * @param {string} path
+ * @param {Object} fixed
  * @return {ResourceFirebase}
  */
-export const resource = (collection) => {
-  return new ResourceFirebase(collection)
+export const resource = (path, fixed) => {
+  return new ResourceFirebase(path, fixed)
 }
 
 /**
@@ -22,13 +23,14 @@ const is = (object, constructor) => object.constructor.name === constructor
  */
 class ResourceFirebase {
   /**
-   * @param {string} collection
+   * @param {string} path
+   * @param {Object} fixed
    * @param {string} id
    * @param {string} order
    * @param {string} timestamp
    */
-  constructor (collection, id = '_id', order = '_key', timestamp = '_timestamp') {
-    this.collection = collection
+  constructor (path, fixed = {}, id = '_id', order = '_key', timestamp = '_timestamp') {
+    this.path = path
     this.id = id
     this.order = order
     this.timestamp = timestamp
@@ -217,14 +219,16 @@ class ResourceFirebase {
    * @private
    */
   _reset () {
-    this.ref = database.collection(this.collection)
+    // noinspection JSUnresolvedFunction
+    this.ref = database.collection(this.path)
   }
 
   /**
    * @private
    */
   _counter () {
-    return database.collection('counters').doc(this.collection)
+    // noinspection JSUnresolvedFunction
+    return database.collection('counters').doc(this.path)
   }
 
   /**

@@ -2,6 +2,8 @@ import { meta } from 'genesis/support/model'
 import { route } from 'genesis/infra/router/resources'
 
 import project from 'src/domains/manager/project/routes'
+import repository from 'src/domains/manager/repository/routes'
+import issue from 'src/domains/manager/issue/routes'
 
 export const managerPath = '/dashboard/manager'
 export const managerName = 'manager.index'
@@ -12,6 +14,8 @@ export const managerMeta = Object.assign(
 
 export const routes = [
   route(managerPath, managerName, managerComponent, {}, managerMeta, [
-    ...project
+    ...project,
+    ...repository,
+    ...issue
   ])
 ]
