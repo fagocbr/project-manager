@@ -55,7 +55,9 @@ class ResourceGitlab {
       loading(false)
       response.data = {
         body: response.data,
-        meta: {},
+        meta: {
+          total: response.headers['x-total']
+        },
         status: {}
       }
       return response

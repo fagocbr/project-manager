@@ -49,7 +49,7 @@ export const namespace = 'manager.issue'
 /**
  * @type {ResourceGitlab}
  */
-export const service = resource(api, {sort: 'asc'})
+export const service = resource(api, {sort: 'desc'})
 
 /**
  * @type {Object}
@@ -101,51 +101,50 @@ export const fields = (scope, route = null) => {
       model.field('title', 'Título').$text().$render(),
       model.field('description', 'Descrição').$textarea().$render(),
       {
-        'id': 24,
-        'description': 'Gennesis',
-        'default_branch': null,
-        'tag_list': [],
-        'public': false,
-        'archived': false,
-        'visibility_level': 10,
-        'ssh_url_to_repo': 'git@git.fagoc.br:desenvolvimento/gennesis.fagoc.br.git',
-        'http_url_to_repo': 'http://git.fagoc.br/desenvolvimento/gennesis.fagoc.br.git',
-        'web_url': 'http://git.fagoc.br/desenvolvimento/gennesis.fagoc.br',
-        'name': 'gennesis.fagoc.br',
-        'name_with_namespace': 'desenvolvimento / gennesis.fagoc.br',
-        'path': 'gennesis.fagoc.br',
-        'path_with_namespace': 'desenvolvimento/gennesis.fagoc.br',
-        'resolve_outdated_diff_discussions': null,
-        'container_registry_enabled': true,
-        'issues_enabled': true,
-        'merge_requests_enabled': true,
-        'wiki_enabled': true,
-        'builds_enabled': true,
-        'snippets_enabled': false,
-        'created_at': '2017-08-23T14:39:28.270Z',
-        'last_activity_at': '2017-08-23T14:39:28.270Z',
-        'shared_runners_enabled': true,
-        'lfs_enabled': true,
-        'creator_id': 6,
-        'namespace': {
-          'id': 16,
-          'name': 'desenvolvimento',
-          'path': 'desenvolvimento',
-          'kind': 'group',
-          'full_path': 'desenvolvimento',
-          'parent_id': null,
-          'members_count_with_descendants': 13
+        'id': 1,
+        'iid': 1,
+        'project_id': 1,
+        'title': 'Utilizar matrícula em Funcionario e Aluno',
+        'description': 'É preciso modificar os serviços de sincronização para enviarem os códigos de matrícula com base no formato [1,2][código] com 10 dígitos',
+        'state': 'closed',
+        'created_at': '2015-11-24T17:18:58.192Z',
+        'updated_at': '2017-10-17T16:34:17.216Z',
+        'labels': ['enhancement'],
+        'milestone': {
+          'id': 1,
+          'iid': 1,
+          'project_id': 1,
+          'title': '#1 - 5.10.0.9',
+          'description': '',
+          'state': 'closed',
+          'created_at': '2015-11-24T17:22:04.231Z',
+          'updated_at': '2016-02-18T22:45:40.128Z',
+          'due_date': '2015-11-30',
+          'start_date': null
         },
-        'avatar_url': null,
-        'star_count': 0,
-        'forks_count': 0,
-        'open_issues_count': 0,
-        'public_builds': true,
-        'shared_with_groups': [],
-        'only_allow_merge_if_build_succeeds': false,
-        'request_access_enabled': false,
-        'only_allow_merge_if_all_discussions_are_resolved': false,
-        'permissions': {'project_access': null, 'group_access': {'access_level': 50, 'notification_level': 3}}
+        'author': {
+          'id': 3,
+          'name': 'William',
+          'username': 'wilcorrea',
+          'state': 'active',
+          'avatar_url': 'http://git.fagoc.br/uploads/-/system/user/avatar/3/1457647_683894968300303_1586681565_n.jpg',
+          'web_url': 'http://git.fagoc.br/wilcorrea'
+        },
+        'assignee': {
+          'id': 3,
+          'name': 'William',
+          'username': 'wilcorrea',
+          'state': 'active',
+          'avatar_url': 'http://git.fagoc.br/uploads/-/system/user/avatar/3/1457647_683894968300303_1586681565_n.jpg',
+          'web_url': 'http://git.fagoc.br/wilcorrea'
+        },
+        'user_notes_count': 0,
+        'upvotes': 0,
+        'downvotes': 0,
+        'due_date': null,
+        'confidential': false,
+        'web_url': 'http://git.fagoc.br/desenvolvimento/siga/issues/1',
+        'subscribed': true
       }
     ],
     scope
