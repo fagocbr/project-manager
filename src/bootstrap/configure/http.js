@@ -130,7 +130,7 @@ export const httpError = (error, router, store) => {
 }
 
 /**
- * @param {AxiosResponse} response
+ * @param {Object} response
  * @param {string} property
  * @param {*} fallback
  * @returns {*}
@@ -149,7 +149,7 @@ export const $extract = (response, property, fallback = {}) => {
 }
 
 /**
- * @param {AxiosResponse} response
+ * @param {Object} response
  * @param {*} fallback
  * @returns {*}
  */
@@ -158,7 +158,7 @@ export const $body = (response, fallback = {}) => {
 }
 
 /**
- * @param {AxiosResponse} response
+ * @param {Object} response
  * @param {*} fallback
  * @returns {*}
  */
@@ -167,7 +167,7 @@ export const $meta = (response, fallback = {}) => {
 }
 
 /**
- * @param {AxiosResponse} response
+ * @param {Object} response
  * @param {*} fallback
  * @returns {*}
  */
@@ -176,14 +176,13 @@ export const $status = (response, fallback = {}) => {
 }
 
 /**
- * @param {AxiosResponse} response
+ * @param {Object} response
  * @returns {*}
  */
 export const $first = (response) => {
-  return response
-  // const content = $body(response)
-  // if (Array.isArray(content)) {
-  //   return content.shift()
-  // }
-  // return content
+  const content = $body(response)
+  if (Array.isArray(content)) {
+    return content.shift()
+  }
+  return content
 }

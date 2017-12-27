@@ -96,6 +96,7 @@ export const fields = (scope, route = null) => {
   return model.filter(
     [
       model.field(id, 'Código').$pk().$render(),
+      model.field('_key', 'Key').$pk().$render(),
       model.field('name', 'Nome').$required().$text().$render(),
       model.field('description', 'Descrição').$form({default: ''}).$textarea().$render()
     ],

@@ -15,6 +15,14 @@ module.exports = {
     PATH: '"/api/v1"',
     PORT: '""'
   },
+  FIREBASE: {
+    apiKey: '"AIzaSyDvHkjSCnPA0D748Ozrzn9JSzPUcX3n0bY"',
+    authDomain: '"project-manager-deec0.firebaseapp.com"',
+    databaseURL: '"https://project-manager-deec0.firebaseio.com"',
+    projectId: '"project-manager-deec0"',
+    storageBucket: '""',
+    messagingSenderId: '"670637881898"'
+  },
   OAUTH: {
     FACEBOOK: '""'
   },
